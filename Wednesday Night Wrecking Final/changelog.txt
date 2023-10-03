@@ -1,0 +1,80 @@
+May 1st, 2023 -
+* First day of starting the project! I thought about it for like 2 days and today is the day I actually start this!!
+* Planning for the project begins
+* Theorized map data files and the system (https://i.imgur.com/734wGU5.png)
+* I can't believe I was against using a class for notes lol (https://i.imgur.com/Fkd0wGF.png)
+* More brainstorming (https://i.imgur.com/Jl3gpun.png)
+
+May 2nd, 2023 - 
+* Coded map converter. It converts .osu data of a mania map to data I can read (extract lane and start offset)
+* Convert will convert LNs too, but will leave that out until LN support is added
+* Coded note falling, seems to work in code (print statements) but not visually. Just a long stream of pink down one lane
+* Added first map, Rhythm Hell charted by Ryax. Perfect for testing. Long delay at start, no chords and no LNs, as well as a short song!
+
+May 3rd, 2023 -
+* Falling notes finally work (had to implement self.y to each note so they fall independently for the fall function)
+* Due to fall math, can only play maps with at least 800ms delay at the start
+* Split map data into metadata and mapdata, split mapdata again into individual lanes and can access data using lane#[0][index]
+* This allows for easier access to data and for checking
+
+May 4th, 2023 -
+* Added 2nd map, Bison Charge
+* Added basic results screen
+* Chris helped with key detection using numerous variables and constantly changing to only detect one key press for one frame
+* This prevents users holding down key and pygame continuously recognizing a keydown press
+* You can now hit notes
+* Accuracy detection implemented
+* Falling crashes on the last note, so set the fall code to only trigger when there is still notes left to be fallen (len(list) > 0)
+* Implemented missing when you don't hit a note in time
+* Implemented judgements (perf, great, bad) due to ms difference
+* There is a bug where if you hit too many fast notes the game crashes? (look into that)
+* Implemented similar concept to falling, only trigger hit and miss code when there is data left to calculate (len(list) > 0)
+* Added grades based on accuracy %
+* The first successful runthrough happened on Rhythm Hell, got to results screen with proper accuracy counts and a grade
+* Added full combo detector
+* Major bug detected: lane lists are empty much too early, causes all calculations to be messed up (hitting and missing don't work)
+
+May 5th - 7th, 2023:
+* Went in circles trying to figure out why lanes were deleting too early, causing game crashing and the game to not work
+* Tried many things with trying to get empty lists to not trigger code
+* It seems the bug only triggers when you have a mix of hits and misses, a full combo or full miss run does not have any bugs
+* Empty list if statement would fix crashing but it had no functionability, you could only watch notes fall down and not play
+* Realized that having the hit as one function and miss as just one function was detecting multiple if statements at the same time, 
+  causing two notes to delete at the same time and therefore emptying lists too early
+* Split the hit and miss functions into 4 functions each (one for each key) for a total of 8 functions
+* Miraculously this fixed the issue, GAME IS NOW WORKING AND FULLY FUNCTIONAL!!!!!!!!! WOOHOOO!!!
+* First successful runthrough on Bison Charge that contained a mix of misses and hits, can definitely say the game is working now!! :D
+
+May 8th, 2023:
+* Note accuracy detection is working, but visually when it's too fast, the notes cannot delete the visual
+* Added new variable that turns True when the note self.y is too low, so deleting notes now have two conditions, when it's hit or missed
+  or fallen too far despite the notes being hit (this is only a visual bug so i'm not too worried about it plus I fixed it sort of)
+* It still is a little ugly because I need a Y value lower than a miss Y value, but it gets back on track as you play so no complaints
+* Transferred map loading and metadata loading codes to functions
+* Added menu with buttons, clicking on it loads the map so now I can play numerous maps without changing code
+* Mouse over a button will reveal the metadata of the corresponding map
+* Transferred game to USB stick for easier portability
+
+May 9th, 2023:
+
+May 18th, 2023 -
+* Added import gc (garbage collect) for optimization (solved lag issue)
+
+May 19th, 2023 - 
+* Added background to title screen, as well as 4 animated OMORI FNF gifs that randomize every instance
+* happy_twins loading screen added (it was in files but I forgot to add it to the game)
+* Added tutorial with my own gifs and tips
+
+June 6th, 2023 - 
+* Took a very large break from the project lol
+* Redid the title screen to resemble WHITE SPACE, door is interactable and acts as a begin button
+
+June 7th, 2023 - 
+* White space objects all converted into interactable items
+* Upon hover, it grows in size
+* Laptop turned into instructions screen
+
+June 8th - 14th, 2023 -
+* More white space additions
+* OMORI and MEWO now have varied dialogue
+* Sketchbook added with 13 pages. Now includes quotes from my classmates and friends, as well as game credits

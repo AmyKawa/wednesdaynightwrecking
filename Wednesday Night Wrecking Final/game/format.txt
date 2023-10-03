@@ -1,0 +1,12 @@
+[Data]
+Song offset total (ms)
+Artist
+Title
+Mapper
+BPM
+Length (0:00)
+Level
+Cover art path
+-
+[HitObjects]
+converted mapdata
